@@ -67,9 +67,8 @@ float area2, pib2, densidade2, pib_per_capita2;
 
         // calculo densidade demográfica e PIB per capita
     
-        densidade1 = populacao1 / area1;
-        pib1 = pib1 * 1000000000;// Convertendo PIB de bilhões para reais
-        pib_per_capita1 = (float) pib1 / populacao1;
+        densidade1 = (float)populacao1 / area1;
+        pib_per_capita1 = (float) pib1 * 1000000000 / populacao1;
     
         //exibição dos calculos da primeira carta
 
@@ -90,9 +89,8 @@ float area2, pib2, densidade2, pib_per_capita2;
 
         // calculo densidade demográfica e PIB per capita
 
-        densidade2 = populacao2 / area2;
-        pib2 = pib2 * 1000000000; // Convertendo PIB de bilhões para reais
-        pib_per_capita2 = (float) pib2 / populacao2;
+        densidade2 = (float)populacao2 / area2;
+        pib_per_capita2 = (float) pib2 * 1000000000 / populacao2;
     //exibição dos calculos da segunda carta
 
     printf("Densidade Demográfica: %.2f hab/Km²\n", densidade2);
