@@ -8,8 +8,8 @@ char estado1;
 char carta1[8] = "Carta01";
 char codigo1[4];
 char cidade1[20];
-int populacao1, turistico1;
-float area1, pib1, densidade1,pib_per_capita1;
+int populacao1, turistico1, resultado_populacao, resultado_super_poder, resultado_densidade, resultado_pib_per_capita, resultado_pib, resultado_area, resultado_turistico, resultado_final;
+float area1, pib1, densidade1,pib_per_capita1, super_poder1;
     
     //variaveis segnda carta
 char estado2;
@@ -17,7 +17,7 @@ char carta2[8] = "Carta02";
 char codigo2[4];
 char cidade2[20];
 int populacao2, turistico2;
-float area2, pib2, densidade2, pib_per_capita2;
+float area2, pib2, densidade2, pib_per_capita2, super_poder2;
     
     // Cadastro das Cartas:
     // Implementando a lógica para solicitar ao usuário que insira os dados das cidades
@@ -68,7 +68,7 @@ float area2, pib2, densidade2, pib_per_capita2;
         // calculo densidade demográfica e PIB per capita
     
         densidade1 = (float)populacao1 / area1;
-        pib_per_capita1 = (float) pib1 * 1000000000 / populacao1;
+        pib_per_capita1 = (float) pib1* 1000000000 / populacao1;
     
         //exibição dos calculos da primeira carta
 
@@ -95,6 +95,46 @@ float area2, pib2, densidade2, pib_per_capita2;
 
     printf("Densidade Demográfica: %.2f hab/Km²\n", densidade2);
     printf("PIB per capita: %.2f reais\n", pib_per_capita2);
+    
+    // cálculo do super poder (densidade invertida)
+    
+    super_poder1 = populacao1 + area1 + pib1 + turistico1 + pib_per_capita1 + (1.0 / densidade1);
+    super_poder2 = populacao2 + area2 + pib2 + turistico2 + pib_per_capita2 + (1.0 / densidade2);
+
+    printf("\nSuper Poder da Carta 1: %.2f\n", super_poder1);
+    printf("Super Poder da Carta 2: %.2f\n", super_poder2);
+
+    // Exemplo:
+    // if (populacaoA > populacaoB) {
+    //     printf("Cidade 1 tem maior população.\n");
+    // } else {
+    //     printf("Cidade 2 tem maior população.\n");
+    // }
+
+    // Exibição dos Resultados:
+    // Após realizar as comparações, exiba os resultados para o usuário.
+    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+
+    // Exemplo:
+    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    
+    // Comparações diretas (1 = carta1 vence, -1 = carta2 vence, 0 = empate)
+    
+    resultado_populacao = (populacao1 > populacao2);
+    resultado_area = (area1 > area2);
+    resultado_pib = (pib1 > pib2);
+    resultado_turistico = (turistico1 > turistico2);
+    resultado_densidade = (densidade1 < densidade2); // invertido!
+    resultado_pib_per_capita = (pib_per_capita1 > pib_per_capita2);
+
+    printf("\nResultados das comparações:\n");
+    printf("População: %d\n", resultado_populacao);
+    printf("Área: %d\n", resultado_area);
+    printf("PIB: %d\n", resultado_pib);
+    printf("Pontos Turísticos: %d\n", resultado_turistico);
+    printf("Densidade Demográfica (invertida): %d\n", resultado_densidade);
+    printf("PIB per capita: %d\n", resultado_pib_per_capita);
+
 
     return 0;
 }
