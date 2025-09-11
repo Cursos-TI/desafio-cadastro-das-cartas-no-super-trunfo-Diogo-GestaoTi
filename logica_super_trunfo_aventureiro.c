@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 // Desafio Super Trunfo - Países
-// Tema 1
+// Tema 3 - Aventureiro
 int main() {
 
 int escolha;    
